@@ -1,0 +1,77 @@
+/* ============================================================
+   Dashboard
+   ============================================================ */
+
+body {
+  margin: 0 !important;
+  background: #f4f6f8 !important;
+}
+
+.card-sort {
+  cursor: move;
+}
+
+
+/* ============================================================
+   Charts
+   ============================================================ */
+
+.apache-doughnut-chart {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 50vh;
+
+  & > canvas {
+    height: 100% !important;
+    aspect-ratio: 1;
+  }
+}
+
+.apache-pie-chart {
+  width: 100%;
+  max-height: 250px;
+}
+
+.apache-line-chart {
+  height: 100%;
+  min-height: 150px;
+  max-height: 250px;
+}
+
+
+/* ============================================================
+   Scoreboard
+   ============================================================ */
+
+.apache-scoreboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, .5rem);
+  align-content: start;
+  width: 100%;
+}
+
+
+/* ============================================================
+   DataTables
+   ============================================================ */
+
+div.dt-container div.dt-layout-table > div {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ============================================================
+   Widget grid
+   ============================================================ */
+
+#apache-widget-grid {
+  & > [class*="col-"] {
+    min-width: 0;
+
+    &:hover {
+      border-right: 1px dashed var(--bs-border-color-translucent);
+      margin-right: -1px;
+    }
+  }
+}

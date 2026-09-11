@@ -1,0 +1,226 @@
+<div id="apache-dashboard-root" class="container py-4">
+
+    <!-- ========================================================
+         HEADER
+         ======================================================== -->
+
+    <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
+
+        <div>
+            <h1 id="apache-server-title" class="h3 mb-1">
+                Apache Server Status
+            </h1>
+
+            <div id="apache-server-subtitle"
+                 class="text-body-secondary small">
+                Loading...
+            </div>
+
+            <div class="text-body-secondary small">
+                Server uptime:
+                <span id="server-uptime">-</span>
+            </div>
+
+            <div class="text-body-secondary small">
+                Server Built:
+                <span id="server-built">-</span>
+            </div>
+        </div>
+
+
+        <!-- ====================================================
+             CONTROLS
+             ==================================================== -->
+
+        <div class="d-flex align-items-center gap-2">
+
+            <!-- Update status -->
+
+            <div class="d-flex align-items-center gap-2
+                        text-body-secondary small">
+
+                <span
+                        id="apache-status-dot"
+                        class="rounded-circle bg-secondary"
+                        style="width: 8px; height: 8px;">
+                </span>
+
+                <span id="apache-last-update">
+                    -
+                </span>
+
+            </div>
+
+
+            <!-- Refresh interval -->
+
+            <select
+                    id="apache-refresh-select"
+                    class="form-select form-select-sm"
+                    title="Frissítési idő"
+                    style="width: auto;">
+
+                <option value="1000">1s</option>
+                <option value="3000">3s</option>
+                <option value="5000" selected>5s</option>
+                <option value="10000">10s</option>
+
+            </select>
+
+
+            <!-- Settings -->
+
+            <button
+                    id="apache-settings-button"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    title="Dashboard beállítások"
+                    data-bs-toggle="modal"
+                    data-bs-target="#apache-settings-modal">
+
+                <i class="bi bi-gear-fill"></i>
+
+            </button>
+
+
+            <!-- Live -->
+
+            <button
+                    id="apache-live-button"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    title="Live frissítés szüneteltetése">
+
+                <i class="bi bi-pause-fill"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================
+         ERROR
+         ======================================================== -->
+
+    <div
+            id="apache-error"
+            class="alert alert-danger d-none"
+            role="alert">
+    </div>
+
+
+    <!-- ========================================================
+         WIDGET GRID
+         ======================================================== -->
+
+    <div
+            id="apache-widget-grid"
+            class="row">
+
+        <!--
+            A WidgetManager ide helyezi be a widgeteket.
+
+            Például:
+
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm rounded-4 h-100">
+                    ...
+                </div>
+            </div>
+        -->
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     SETTINGS MODAL
+     ============================================================ -->
+
+<div
+        class="modal fade"
+        id="apache-settings-modal"
+        tabindex="-1"
+        aria-labelledby="apache-settings-modal-label"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-scrollable">
+
+        <div class="modal-content rounded-4">
+
+            <div class="modal-header">
+
+                <h5
+                        class="modal-title"
+                        id="apache-settings-modal-label">
+
+                    Dashboard settings
+
+                </h5>
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+
+                    <div class="fw-semibold mb-1">
+                        Widgets
+                    </div>
+
+                    <div class="text-body-secondary small">
+                        Select which widgets to display.
+                    </div>
+
+                </div>
+
+
+                <!--
+                    A WidgetManager ide generálja
+                    a checkboxokat.
+                -->
+
+                <div id="apache-widget-settings">
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+                <button
+                        id="apache-settings-apply"
+                        type="button"
+                        class="btn btn-primary">
+
+                    Apply
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
