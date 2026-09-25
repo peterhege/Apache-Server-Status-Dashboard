@@ -4,7 +4,6 @@ export default class DataTableWidget extends Widget {
 
     constructor(options = {}) {
         super(options);
-
         this.table = null;
     }
 
@@ -34,12 +33,12 @@ export default class DataTableWidget extends Widget {
     }
 
 
-    update(data) {
-        const value = this.getValue(data);
-        if (!this.table) this.initializeTable(value.headers);
+    async update(data) {
+        console.log('DataTableWidget.update', data);
+        const value = await this.getValue(data);
+        if (!this.table) this.initializeTable(value.headers ?? []);
         this.table.clear().rows.add(value.rows).draw(false);
     }
-
 
     initializeTable(headers) {
 

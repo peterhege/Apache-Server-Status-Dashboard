@@ -3,6 +3,7 @@ import LineChartWidget from './widgets/LineChartWidget.js';
 import PieChartWidget from "./widgets/PieChartWidget";
 import ScoreboardWidget from "./widgets/ScoreboardWidget";
 import DataTableWidget from "./widgets/DataTableWidget";
+import IpRequestTableWidget from './widgets/IpRequestTableWidget';
 
 export default class WidgetManager {
 
@@ -46,7 +47,7 @@ export default class WidgetManager {
                 labels: ['Busy', 'Idle'],
                 value: data => data.workers.busy ?? 0,
                 max: data => data.workers.total ?? 0,
-                info: value => `<div class="fs-5 fw-bold">${value[0]}/${value[1]}</div><div class="text-muted small">Busy / Idle</div>`
+                info: value => `<div class="fs-5 fw-bold">${value[0]}/${value[1]}</div><div class="text-muted small">Busy / Total</div>`
             })
         );
 
@@ -213,6 +214,13 @@ export default class WidgetManager {
                     headers: data.serverTable.headers,
                     rows: data.serverTable.rows
                 })
+            })
+        );
+
+        this.register(
+            new IpRequestTableWidget({
+                id: 'ip-request-table',
+                title: 'Requests by IP'
             })
         );
     }
@@ -400,7 +408,7 @@ export default class WidgetManager {
         for (const widget of this.widgets.values()) {
             const settings = this.settings.widgets[widget.id];
             if (!settings.enabled) continue;
-            widget.update(data);
+            widget.update(data)?.then();
         }
     }
 

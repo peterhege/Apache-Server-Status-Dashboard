@@ -18,11 +18,8 @@ export default class Widget {
     }
 
 
-    getValue(data) {
-        if (typeof this.value === 'function') {
-            return this.value(data);
-        }
-
+    async getValue(data) {
+        if (typeof this.value === 'function') return this.value(data);
         return this.value;
     }
 

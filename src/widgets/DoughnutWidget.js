@@ -55,8 +55,8 @@ export default class DoughnutWidget extends Widget {
         );
     }
 
-    update(data) {
-        const value = this.getValue(data);
+    async update(data) {
+        const value =await this.getValue(data);
         this.chart.data.labels = this.labels;
         this.chart.data.datasets[0].data = value;
         this.chart.update();

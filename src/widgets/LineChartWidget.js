@@ -6,7 +6,7 @@ export default class LineChartWidget extends Widget {
         super(options);
 
         this.series = options.series ?? [];
-        this.max = options.max ?? 100;
+        this.max = options.max ?? null;
 
         this.startTime = null;
         this.dataPoints = [];

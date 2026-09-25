@@ -45,8 +45,8 @@ export default class PieChartWidget extends Widget {
     }
 
 
-    update(data) {
-        const value = this.getValue(data);
+    async update(data) {
+        const value = await this.getValue(data);
         this.chart.data.labels = value.labels;
         this.chart.data.datasets[0].data = value.values;
         this.chart.data.datasets[0].backgroundColor = ChartColors.getColors(value.values.length);

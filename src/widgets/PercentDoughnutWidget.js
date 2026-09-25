@@ -10,8 +10,8 @@ export default class PercentDoughnutWidget extends DoughnutWidget {
         this.max = options.max ?? 100;
     }
 
-    update(data) {
-        const value = this.getValue(data);
+    async update(data) {
+        const value = await this.getValue(data);
         let max = this.getMax(data);
         if (max < value) this.max = max = value;
 
